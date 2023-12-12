@@ -1,0 +1,53 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.supply.products.exceptions.ResourceNotFoundException;
+import com.supply.products.models.dto.CategoryDto;
+import com.supply.products.models.dto.mapper.CategoryMapper;
+import com.supply.products.models.entity.Category;
+import com.supply.products.repository.CategoryRepository;
+import com.supply.products.services.CategoryService;
+
+
+
+@Service
+public class CategoryServiceImpl implements CategoryService{
+	
+	@Autowired
+	private CategoryRepository categoryRepository; 
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<CategoryDto> findCategoryAll() {
+		
+		List<Category> categories=categoryRepository.findAll();
+		
+		
+		return categories.stream().filter(c->c.getActivated().equals(true))
+				.map(CategoryMapper::mapToCategoryDto).toList();
+	}
+
+	@Override
+	 @Transactional(readOnly = true)
+	public CategoryDto findCategoryById(Long id) {
+		
+		Category category=this.findCategoryByIdGeneral(id);
+		
+		
+		return CategoryMapper.mapToCategoryDto(category);
+	}
+
+	@Override
+	public Category findCategoryByIdGeneral(Long id) {
+		// TODO Auto-generated method stub
+		return categoryRepository.findById(id).
+				filter(c->c.getActivated().equals(true))
+				.orElseThrow(()->new ResourceNotFoundException("Category not found with id: " + id));
+	}
+
+}

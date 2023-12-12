@@ -1,0 +1,5 @@
+package com.supply.products.repository;
+
+public class CategoriaRepository {
+
+}

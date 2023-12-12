@@ -1,0 +1,23 @@
+package com.supply.products.services;
+
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.supply.products.models.dto.FilterProductDto;
+import com.supply.products.models.dto.ProductRequestDto;
+import com.supply.products.models.dto.ProductResponseDto;
+
+public interface ProductService {
+	
+	public Page<ProductResponseDto> findProductoByAll(Pageable pageable);
+	public ProductResponseDto findProductoById(Long id);
+	public List<ProductResponseDto> findProductoByName(FilterProductDto request);
+	public ProductResponseDto saveProducto(ProductRequestDto producto);
+	public ProductResponseDto updateProducto(ProductRequestDto producto);
+	public void deleteProducto(Long id);
+
+
+}

@@ -1,0 +1,17 @@
+package com.supply.products.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.supply.products.services.CategoryService;
+
+@RestController
+
+public class CategoryController {
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	
+
+}

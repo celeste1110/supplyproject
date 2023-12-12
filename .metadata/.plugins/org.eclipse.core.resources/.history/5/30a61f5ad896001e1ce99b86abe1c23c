@@ -1,0 +1,44 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.supply.products.models.dto.CategoryDto;
+import com.supply.products.models.dto.mapper.CategoryMapper;
+import com.supply.products.models.entity.Category;
+import com.supply.products.repository.CategoryRepository;
+import com.supply.products.services.CategoryService;
+
+
+
+@Service
+public class CategoriaServiceImpl implements CategoryService{
+	
+	@Autowired
+	private CategoryRepository categoriaRepository; 
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<CategoryDto> findCategoryAll() {
+		
+		List<Category> categorias=categoriaRepository.findAll();
+		
+		
+		return categorias.stream().filter(c->c.getHabilitado().equals(true))
+				.map(CategoryMapper::mapToCategoriaDto).toList();
+	}
+
+	@Override
+	 @Transactional(readOnly = true)
+	public Optional<CategoryDto> findCategoryById(Long id) {
+		// TODO Auto-generated method stub
+		return categoriaRepository.findById(id).
+				filter(c->c.getHabilitado().equals(true))
+				.map(CategoryMapper::mapToCategoriaDto);
+	}
+
+}

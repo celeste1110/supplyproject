@@ -1,0 +1,15 @@
+package com.supply.products.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.supply.products.models.dto.CategoriaDto;
+
+public interface CategoriaService {
+	
+	public List<CategoriaDto> findCategoryAll();
+	
+	public Optional<CategoriaDto> findCategoryById(Long id);
+	
+
+}

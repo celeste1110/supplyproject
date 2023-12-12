@@ -1,0 +1,19 @@
+package com.supply.products.models.dto.mapper;
+
+import com.supply.products.models.dto.MeasuringUnitDto;
+import com.supply.products.models.entity.MeasuringUnid;
+
+public class MeasuringUnitMapper {
+	
+public static MeasuringUnitDto mapToUnidadMedidaDto(MeasuringUnid umedida) {
+		
+	MeasuringUnitDto umedidaDto=new MeasuringUnitDto(
+			umedida.getId(),
+			umedida.getNombreUnidMedida(),
+			umedida.getSimbUnidadMedida()
+				);
+		
+		return umedidaDto;
+	}
+
+}

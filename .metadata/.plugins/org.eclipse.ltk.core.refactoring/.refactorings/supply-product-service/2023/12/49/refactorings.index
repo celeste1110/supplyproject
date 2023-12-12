@@ -1,0 +1,27 @@
+1702071102073	Rename package 'com.supply.products.servives'
+1702071216094	Delete element
+1702071221089	Delete element
+1702078887350	Delete element
+1702079013780	Rename type 'CategoriaReposiyory'
+1702137060174	Move compilation unit
+1702137816258	Rename type 'ProductoImpl'
+1702153752737	Rename type 'Categoria'
+1702153764671	Rename type 'Producto'
+1702153828434	Rename type 'UnidadMedida'
+1702155456974	Rename type 'CategoriaDto'
+1702155572505	Rename type 'UnidadMedidaDto'
+1702155644245	Rename type 'ProductoRequestDto'
+1702155829208	Rename type 'ProductoResponseDto'
+1702155936502	Rename type 'CategoriaMapper'
+1702156020388	Rename type 'UnidadMedidaMapper'
+1702156114033	Rename type 'ProductoMapper'
+1702156233009	Rename type 'CategoriaRepository'
+1702156260549	Rename type 'UnidadMedidaRepository'
+1702156289094	Rename type 'ProductoRepository'
+1702156412885	Rename type 'CategoriaService'
+1702156445678	Rename type 'UnidadMedidaService'
+1702156461605	Rename type 'ProductoService'
+1702156800903	Rename type 'CategoriaServiceImpl'
+1702156821742	Rename type 'UnidadMedidaServiceImpl'
+1702156875468	Rename type 'ProductoServiceImpl'
+1702157266754	Rename type 'MeasuringUnid'

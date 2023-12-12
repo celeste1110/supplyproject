@@ -1,0 +1,24 @@
+package com.supply.products.models.dto.mapper;
+
+import com.supply.products.models.dto.ProductResponseDto;
+
+import com.supply.products.models.entity.Product;
+
+public class ProductoMapper {
+	
+public static ProductResponseDto mapToProductoDto(Product producto) {
+		
+		ProductResponseDto productResponseoDto=new ProductResponseDto(
+				
+				producto.getId(),
+				producto.getNombre(),
+				producto.getPrecio(),
+				CategoryMapper.mapToCategoriaDto(producto.getCategoria()),
+				MeasuringUnitMapper.mapToUnidadMedidaDto(producto.getUnidadMedida())
+		
+				);
+		
+		return productResponseoDto;
+	}
+
+}

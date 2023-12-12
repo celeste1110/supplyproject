@@ -1,0 +1,13 @@
+package com.supply.products.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.supply.products.models.dto.MeasuringUnitDto;
+
+public interface MeasuringUnitService {
+	
+	public List<MeasuringUnitDto> findMeasuringUnitAll();
+	public Optional<MeasuringUnitDto> finddMeasuringUnitById(Long id);
+
+}

@@ -1,0 +1,22 @@
+package com.supply.products.models.dto;
+
+
+import com.supply.products.models.entity.Categoria;
+import com.supply.products.models.entity.UnidadMedida;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductoResponseDto {
+
+	private Long id;
+	private String nombre;
+	private double precio;
+	private Categoria categoria;
+	private UnidadMedida unidadMedida;
+	
+}

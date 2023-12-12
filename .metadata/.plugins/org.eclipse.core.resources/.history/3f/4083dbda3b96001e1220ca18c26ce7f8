@@ -1,0 +1,17 @@
+package com.supply.products.services;
+
+import java.awt.print.Pageable;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+
+import com.supply.products.models.dto.ProductoRequestDto;
+
+public interface ProductoService {
+	
+	public Page<ProductoRequestDto> findProductoByAll(Pageable pageable);
+	public Optional<ProductoRequestDto> findProductoById(Long id);
+	public List<Producto> findProductoByNameAndCategoriaAndFlag(ProductoRequest request);
+	public Producto saveProducto(Producto producto);
+
+}

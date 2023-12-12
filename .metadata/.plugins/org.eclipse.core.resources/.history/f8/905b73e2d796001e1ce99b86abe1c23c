@@ -1,0 +1,38 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.supply.products.models.dto.MeasuringUnitDto;
+import com.supply.products.models.dto.mapper.MeasuringUnitMapper;
+import com.supply.products.models.entity.MeasuringUnid;
+import com.supply.products.repository.MeasuringUnitRepository;
+import com.supply.products.services.UnidadMedidaService;
+
+
+@Service
+public class UnidadMedidaServiceImpl implements UnidadMedidaService{
+	
+	@Autowired
+	private MeasuringUnitRepository repository;
+
+	@Override
+	public List<MeasuringUnitDto> findUnidadMedidaAll() {
+
+		 List<MeasuringUnid> umedida=repository.findAll();
+		 
+		return umedida.stream().filter(u->u.getHabilitado().equals(true))
+				.map(MeasuringUnitMapper::mapToUnidadMedidaDto).toList();
+	}
+
+	@Override
+	public Optional<MeasuringUnitDto> findUnidadMedidaById(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).filter(u->u.getHabilitado().equals(true))
+				.map(MeasuringUnitMapper::mapToUnidadMedidaDto);
+	}
+
+}

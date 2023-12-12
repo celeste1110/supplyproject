@@ -1,0 +1,31 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.supply.products.models.dto.CategoriaDto;
+import com.supply.products.repository.CategoriaRepository;
+import com.supply.products.services.CategoriaService;
+
+@Service
+public class CategoriaServiceImpl implements CategoriaService{
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository; 
+
+	@Override
+	public List<CategoriaDto> findCategoryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<CategoriaDto> findCategoryById(Long id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+}

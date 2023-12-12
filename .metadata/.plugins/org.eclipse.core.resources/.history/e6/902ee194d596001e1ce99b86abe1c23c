@@ -1,0 +1,18 @@
+package com.supply.products.models.dto.mapper;
+
+import com.supply.products.models.dto.CategoriaDto;
+import com.supply.products.models.entity.Category;
+
+public class CategoriaMapper {
+	
+	public static CategoriaDto mapToCategoriaDto(Category categoria) {
+		
+		CategoriaDto categoriaDto=new CategoriaDto(
+				categoria.getCodCategoria(),
+				categoria.getNombreCategoria()
+				);
+		
+		return categoriaDto;
+	}
+
+}

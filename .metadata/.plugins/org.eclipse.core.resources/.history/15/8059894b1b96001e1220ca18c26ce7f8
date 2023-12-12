@@ -1,0 +1,5 @@
+package com.supply.products.models.entity;
+
+public class Categoria {
+
+}

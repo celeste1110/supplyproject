@@ -1,0 +1,52 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.supply.products.models.dto.FilterProductDto;
+import com.supply.products.models.dto.ProductoRequestDto;
+import com.supply.products.models.dto.ProductoResponseDto;
+import com.supply.products.models.dto.mapper.ProductoMapper;
+import com.supply.products.models.entity.Producto;
+import com.supply.products.repository.ProductoRepository;
+import com.supply.products.services.ProductoService;
+
+@Service
+public class ProductoServiceImpl implements ProductoService{
+	
+	@Autowired
+	private ProductoRepository productoRepository;
+
+	@Override
+	public Page<ProductoResponseDto> findProductoByAll(Pageable pageable) {
+		
+		Page<Producto> products=productoRepository.findAll( pageable);
+		
+		return (Page<ProductoResponseDto>) products.filter(p->p.getHabilitado().equals(true))
+				.map(ProductoMapper::mapToProductoDto);
+	}
+
+	@Override
+	public Optional<ProductoResponseDto> findProductoById(Long id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public List<ProductoResponseDto> findProductoByName(FilterProductDto request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductoResponseDto saveProducto(ProductoRequestDto producto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,6 @@
+package com.supply.products.exceptions;
+
+public class GlobalExceptionHandler {
+	
+
+}

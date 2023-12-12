@@ -1,0 +1,32 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: servicio-gateway-server
+  
+  cloud:
+    gateway:
+      routes:
+        - id: servicio-products
+          uri: lb://servicio-products
+          predicates:
+            - Path=/api/products/**,/api/categories/**,/api/measuring/**
+          filters:
+            - AuthFilter
+
+        - id: hotel-service
+          uri: lb://hotel-service
+          predicates:
+            - Path=/hoteles/**,/staffs/**
+
+        - id: calificacion-service
+          uri: lb://calificacion-service
+          predicates:
+            - Path=/calificaciones/**
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+    

@@ -1,0 +1,103 @@
+package com.supply.products.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.supply.products.exceptions.ResourceNotFoundException;
+import com.supply.products.models.dto.FilterProductDto;
+import com.supply.products.models.dto.ProductRequestDto;
+import com.supply.products.models.dto.ProductResponseDto;
+import com.supply.products.models.dto.mapper.ProductMapper;
+import com.supply.products.models.entity.Category;
+import com.supply.products.models.entity.MeasuringUnit;
+import com.supply.products.models.entity.Product;
+import com.supply.products.repository.CategoryRepository;
+import com.supply.products.repository.MeasuringUnitRepository;
+import com.supply.products.repository.ProductRepository;
+import com.supply.products.services.CategoryService;
+import com.supply.products.services.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService{
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
+	private MeasuringService measuringUnitService;
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<ProductResponseDto> findProductByAll(Pageable pageable) {
+		
+		Page<Product> products=productRepository.findAll( pageable);
+		
+		return (Page<ProductResponseDto>) products.filter(p->p.getActivated().equals(true))
+				.map(ProductMapper::mapToProductDto);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public ProductResponseDto findProductById(Long id) {
+	
+		Product oproduct=productRepository.findById(id)
+				.filter(p->p.getActivated().equals(true))
+				.orElseThrow(()->new ResourceNotFoundException("Product not found with id: " + id));
+		
+		
+			return ProductMapper.mapToProductDto(oproduct);
+	}
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<ProductResponseDto> findProductByName(FilterProductDto request) {
+		
+		List<Product> products=productRepository.findAll();
+		
+		return products.stream().filter(p->p.getActivated().equals(true) &&
+				p.getName().contains(request.getName()))
+				.map(ProductMapper::mapToProductDto).toList();
+	}
+
+	@Override
+	 @Transactional
+	public ProductResponseDto saveProduct(ProductRequestDto productDto) {
+		
+		Product product=new Product();
+		
+		product.setName(productDto.getName());
+		product.setPrice(productDto.getPrice());
+		
+		product.setCategory();
+		
+		Product productDB=productRepository.save(null);
+		
+		return null;
+	}
+
+	@Override
+	public ProductResponseDto updateProduct(ProductRequestDto producto) {
+		
+		return null;
+	}
+
+	@Override
+	public void deleteProduct(Long id) {
+		
+		
+	}
+
+
+
+
+
+}
