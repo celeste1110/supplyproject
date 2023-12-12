@@ -29,7 +29,7 @@ public class Product implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cod_product", columnDefinition = "NUMERIC(18,0)")
+	@Column(name="cod_product")
 	private Long id;
 	
 	@Column(name="name", length=50,nullable = false)
@@ -41,11 +41,11 @@ public class Product implements Serializable{
 	private double price;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="cod_category",columnDefinition = "bigint")
+	@JoinColumn(name="cod_category")
 	private Category category;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="cod_munit",columnDefinition = "bigint")
+	@JoinColumn(name="cod_munit")
 	private MeasuringUnit measuringUnit;
 	
 	@JsonIgnore

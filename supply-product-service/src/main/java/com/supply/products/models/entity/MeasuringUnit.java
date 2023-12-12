@@ -26,7 +26,7 @@ public class MeasuringUnit implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cod_munit", columnDefinition = "NUMERIC(18,0)")
+	@Column(name="cod_munit")
 	private Long id;
 	@Column(name="name",columnDefinition = "VARCHAR(75)",nullable = false)
 	@NotEmpty
