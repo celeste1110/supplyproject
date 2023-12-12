@@ -1,0 +1,14 @@
+PROYECTO: DESARROLLO DE UNA APLICACION ORIENTADA A MICROSERVICIOS PARA LA GESTIÓN DE PEDIDOS
+EN EL SERVICIO DE AVITUALLAMIENTO.
+
+MICROSERVICIOS:
+
+-Service CatalogueProducts
+-Service Clients
+-Service CatalogueAgregat 
+-Service Order
+-Service Users
+
+Objetivo: Desarrollar una aplicación que permita a los cocineros de las embarcaciones
+de un cliente determinado realizar sus pedidos de víveres y a la vez poder gestionar el mismo. 
+
