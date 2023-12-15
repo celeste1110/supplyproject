@@ -23,17 +23,24 @@ import com.supply.products.services.ProductService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/products")
+//@RequestMapping("/products")
 public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
 	
 	@GetMapping
-	public ResponseEntity<Page<ProductResponseDto>> listAll(Pageable pageable) {
+	public ResponseEntity<Page<ProductResponseDto>> listAllPageable(Pageable pageable) {
 		
 		Page<ProductResponseDto> listProduct=productService.findProductByAll(pageable);
 		return new ResponseEntity<>(listProduct,HttpStatus.OK);
+	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<List<ProductResponseDto>> listAll(){
+		List<ProductResponseDto> listProducts=productService.findProductByAllDefault();
+		
+		return new ResponseEntity<>(listProducts,HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")

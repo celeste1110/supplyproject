@@ -11,7 +11,13 @@ spring:
         - id: servicio-products
           uri: lb://servicio-products
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/products/**
+          filters:
+            - StripPrefix=2           
+        - id: servicio-clients
+          uri: lb://servicio-clients
+          predicates:
+            - Path=/api/clients/**
           filters:
             - StripPrefix=2
         

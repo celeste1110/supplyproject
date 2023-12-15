@@ -1,4 +1,5 @@
-package com.supply.products.models.dto;
+package com.supply.client.models.dto.filter;
+
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -10,10 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CategoryDto {
+public class FilterEmbarkationDto {
 
-	private Long codCategory;
-	@NotEmpty(message = "name category should not be null or empty")
-	private String nameCategory;
-
+	@NotEmpty
+	private String codClient;
+	
+	@NotEmpty
+	private String name;
 }

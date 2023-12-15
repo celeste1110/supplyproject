@@ -81,7 +81,8 @@ public class ProductServiceImpl implements ProductService{
 	public ProductResponseDto saveProduct(ProductRequestDto productDto) {
 		
 		Optional<Product> optionalProduct=productRepository.findByName(productDto.getName().toUpperCase())
-				.filter(p->p.getActivated().equals(true));
+				.stream()
+				.findFirst();
 		
 		if(optionalProduct.isPresent()) {
 			throw new BadRequestException("Name already exists for Product");
@@ -106,7 +107,8 @@ public class ProductServiceImpl implements ProductService{
 		Product product=this.findProductByIdGeneral(id);
 		
 		Optional<Product> optionalProduct=productRepository.findByName(productDto.getName().toUpperCase())
-				.filter(p->p.getId()!=id && p.getActivated().equals(true));
+				.stream()
+				.filter(p->p.getId()!=id).findFirst();
 		
 		if(optionalProduct.isPresent() ) {
 			throw new BadRequestException("Name already exists for Product");
@@ -147,6 +149,14 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.findById(id)
 				.filter(p->p.getActivated().equals(true))
 				.orElseThrow(()->new ResourceNotFoundException("Product not found with id: " + id));
+	}
+
+	@Override
+	public List<ProductResponseDto> findProductByAllDefault() {
+		
+		return productRepository.findAll().stream()
+				.filter(p->p.getActivated().equals(true))
+				.map(ProductMapper::mapToProductDto).toList();
 	}
 
 

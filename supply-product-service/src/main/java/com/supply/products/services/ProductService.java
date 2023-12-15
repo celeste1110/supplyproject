@@ -20,6 +20,7 @@ public interface ProductService {
 	public ProductResponseDto updateProduct(ProductRequestDto producto,Long id);
 	public void deleteProduct(Long id);
 	public Product findProductByIdGeneral(Long id);
+	public List<ProductResponseDto> findProductByAllDefault();
 
 
 }
