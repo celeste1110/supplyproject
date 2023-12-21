@@ -20,6 +20,18 @@ spring:
             - Path=/api/clients/**
           filters:
             - StripPrefix=2
+        - id: servicio-catagregate
+          uri: lb://servicio-catagregate
+          predicates:
+            - Path=/api/catalogue/**
+          filters:
+            - StripPrefix=2
+        - id: servicio-users
+          uri: lb://servicio-users
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=2
         
 eureka:
   instance:
