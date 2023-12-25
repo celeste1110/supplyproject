@@ -14,7 +14,7 @@ import com.supply.products.models.dto.MeasuringUnitDto;
 import com.supply.products.services.MeasuringUnitService;
 
 @RestController
-@RequestMapping("/measuring")
+@RequestMapping("/mea")
 public class MeasuringUnitController {
 	
 	@Autowired

@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.supply.products.models.dto.CategoryDto;
 import com.supply.products.models.dto.FilterProductDto;
+import com.supply.products.models.dto.MeasuringUnitDto;
 import com.supply.products.models.dto.ProductRequestDto;
 import com.supply.products.models.dto.ProductResponseDto;
+import com.supply.products.services.CategoryService;
+import com.supply.products.services.MeasuringUnitService;
 import com.supply.products.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -28,6 +31,14 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	@Autowired
+	MeasuringUnitService measuringUnitService;
+	
+	//products
 	
 	@GetMapping
 	public ResponseEntity<Page<ProductResponseDto>> listAllPageable(Pageable pageable) {
@@ -80,6 +91,39 @@ public class ProductController {
 		return new ResponseEntity<>("Product succesfully deleted",HttpStatus.OK);
 		
 	}
+	
+	//category
+	
+	@GetMapping("/categories")
+	public ResponseEntity<List<CategoryDto>> listCategoriesAll() {
+		
+		List<CategoryDto> listCategories=categoryService.findCategoryAll();
+		return new ResponseEntity<>(listCategories,HttpStatus.OK);
+	}
+
+	@GetMapping("/categories/{id}")
+	public ResponseEntity<CategoryDto> detailCategory(@PathVariable Long id) {
+		CategoryDto category = categoryService.findCategoryById(id);
+		
+		return new ResponseEntity<>(category,HttpStatus.OK);
+	}
+	
+	//measuring unit
+	
+	@GetMapping("/measuring")
+	public ResponseEntity<List<MeasuringUnitDto>> listMUnitAll() {
+		
+		List<MeasuringUnitDto> listMeasuring=measuringUnitService.findMeasuringUnitAll();
+		return new ResponseEntity<>(listMeasuring,HttpStatus.OK);
+	}
+
+	@GetMapping("/measuring/{id}")
+	public ResponseEntity<MeasuringUnitDto> detailMUnit(@PathVariable Long id) {
+		MeasuringUnitDto measuring = measuringUnitService.finddMeasuringUnitById(id);
+		
+		return new ResponseEntity<>(measuring,HttpStatus.OK);
+	}
+
 	
 	
 	

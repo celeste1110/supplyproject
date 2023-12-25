@@ -1,9 +1,9 @@
 package com.supply.catagregate.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
-import com.supply.catagregate.models.entity.AttentionPort;
+import com.supply.catagregate.models.documents.AttentionPort;
 
-public interface AttentionPortRepository extends JpaRepository<AttentionPort, Long>{
+public interface AttentionPortRepository extends ReactiveMongoRepository<AttentionPort, String>{
 
 }

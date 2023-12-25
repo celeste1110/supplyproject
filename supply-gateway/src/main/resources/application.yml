@@ -32,6 +32,12 @@ spring:
             - Path=/api/users/**
           filters:
             - StripPrefix=2
+        - id: servicio-orders
+          uri: lb://servicio-orders
+          predicates:
+            - Path=/api/orders/**
+          filters:
+            - StripPrefix=2
         
 eureka:
   instance:

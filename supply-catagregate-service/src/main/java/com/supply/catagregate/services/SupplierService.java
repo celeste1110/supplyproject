@@ -1,13 +1,20 @@
 package com.supply.catagregate.services;
 
-import java.util.List;
+import com.supply.catagregate.models.documents.dto.SupplierDto;
 
-import com.supply.catagregate.models.entity.Supplier;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface SupplierService {
 	
-public List<Supplier> findSupplierAll();
+	public Flux<SupplierDto> findSupplierAll();
 	
-	public Supplier findSupplierPortById(Long id);
+	public Mono<SupplierDto> findSupplierById(String id);
+	
+	public Mono<SupplierDto> saveSupplier(SupplierDto supplier);
+	
+	public Mono<SupplierDto> updateSupplier(String id,SupplierDto supplier);
+	
+	public Mono<Void> deleteSupplier(String id);
 
 }

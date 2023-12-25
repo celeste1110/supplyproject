@@ -14,7 +14,7 @@ import com.supply.products.models.dto.CategoryDto;
 import com.supply.products.services.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/cat")
 public class CategoryController {
 	
 	@Autowired

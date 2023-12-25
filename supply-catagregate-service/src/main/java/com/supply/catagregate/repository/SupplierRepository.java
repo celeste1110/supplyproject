@@ -1,9 +1,12 @@
 package com.supply.catagregate.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.supply.catagregate.models.entity.Supplier;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface SupplierRepository extends JpaRepository<Supplier, Long>{
+import com.supply.catagregate.models.documents.Supplier;
+
+@Repository
+public interface SupplierRepository extends ReactiveMongoRepository<Supplier, String>{
 
 }
