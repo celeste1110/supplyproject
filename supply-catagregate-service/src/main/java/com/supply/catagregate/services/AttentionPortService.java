@@ -1,14 +1,20 @@
 package com.supply.catagregate.services;
 
-import java.util.List;
+import com.supply.catagregate.models.documents.dto.AttentionPortDto;
 
-import com.supply.catagregate.models.entity.AttentionPort;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 public interface AttentionPortService {
 
+	public Flux<AttentionPortDto> findAPortAll();
 	
-	public List<AttentionPort> findAttentionPortAll();
+	public Mono<AttentionPortDto> findAPortById(String id);
 	
-	public AttentionPort findAttentionPortById(Long id);
+	public Mono<AttentionPortDto> saveAPort(AttentionPortDto port);
+	
+	public Mono<AttentionPortDto> updateAport(String id,AttentionPortDto port);
+	
+	public Mono<Void> deleteAport(String id);
 }

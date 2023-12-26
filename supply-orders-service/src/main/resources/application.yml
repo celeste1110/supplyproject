@@ -1,0 +1,9 @@
+server:
+  port: 8084
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  config: 
+    import: optional:configserver:http://localhost:8888/
+  application:
+    name: servicio-orders
